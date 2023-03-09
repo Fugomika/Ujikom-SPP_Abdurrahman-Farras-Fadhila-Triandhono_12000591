@@ -22,7 +22,7 @@
                         </script>
                     </div>
                 @endif
-                @if ($message = Session::get('errors'))
+                @if ($message = Session::get('error'))
                     <div class="alert alert-danger">
                         <strong>Peringatan!</strong> {{$message}}
                     </div>
@@ -55,9 +55,20 @@
                                     <td>{{$a->treasurer}}</td>
                                     <td>{{$a->created_at}}</td>
                                     <td><span style="display:none;">{{$a->created_at}}</span>
-                                        <button type="button" data-id="{{$a->id}}" class="receipt btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalReceipt">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
+                                        <form action="{{route('payment.destroy',$a->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" data-id="{{$a->id}}" class="receipt btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalReceipt">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                @if(auth()->user()->level == 'admin')
+                                                    <button onclick="return confirm('Yakin ingin menghapus Pembayran {{$a->created_at}} ?')" type="submit" class="btn btn-outline-danger">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach 

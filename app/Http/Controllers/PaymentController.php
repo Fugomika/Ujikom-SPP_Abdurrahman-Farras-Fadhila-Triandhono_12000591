@@ -16,7 +16,7 @@ class PaymentController extends Controller
     {
         if((auth()->user()->level == 'student')){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = PaymentViews::orderby('id','desc')->get();
@@ -97,7 +97,6 @@ class PaymentController extends Controller
 
             $month++;
         }
-        
         return redirect('payment')->with('success','Pembayaran Berhasil dibuat!');
     }
 
@@ -148,8 +147,9 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(Payment $payment): RedirectResponse
-    // {
-    //     //
-    // }
+    public function destroy(Payment $payment): RedirectResponse
+    {
+        $payment->delete();
+        return redirect('payment')->with('success','Pembayaran Berhasil dihapus!');
+    }
 }

@@ -16,7 +16,7 @@ class MutationController extends Controller
     {
         if(auth()->user()->level != 'admin'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = MutationViews::orderby('id','desc')->get();
@@ -41,7 +41,7 @@ class MutationController extends Controller
     {
         $cek = MutationViews::where('nisn_fk_id',$request->nisn_fk_id)->count();
         if($cek!=0){
-            return redirect('mutation')->with('errors','Mutasi '.$request->nisn_fk_id.' sudah ada sebelumnya!');
+            return redirect('mutation')->with('error','Mutasi '.$request->nisn_fk_id.' sudah ada sebelumnya!');
         }
 
         Special::create([

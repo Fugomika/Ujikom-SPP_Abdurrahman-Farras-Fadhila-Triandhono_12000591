@@ -6,10 +6,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>SPP APP - SMAIT As-Syifa Boarding School</title>
-    <link rel="icon" type="image/x-icon" href="../../../public/favicon.ico">
-
+    <link rel="shortcut icon" type="image/png" href="https://smpit.assyifa-boardingschool.sch.id/wp-content/uploads/2019/09/Logo-SMPIT-fix-1024x1024.png"/>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -32,6 +30,8 @@
     <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.print.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <style type="text/css" media="print">
     @media print {
@@ -60,12 +60,14 @@
         }
     }
   </style>
-<body style="padding-top: 65px;">
+<body style="padding-top: 65px; background-color: #2C3333;">
+    {{-- <img src="{{public_path('images/favicon.ico')}}" alt=""> --}}
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light fixed-top  shadow-sm" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top  shadow-sm" style="background-color: #2E4F4F;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    SPP APP - ASBOSCH
+                    <img class="rounded-circle shadow-4-strong bg-white" alt="avatar2" width="50" src="https://smpit.assyifa-boardingschool.sch.id/wp-content/uploads/2019/09/Logo-SMPIT-fix-1024x1024.png" />
+                     &nbsp SPP APP - ASBOSCH
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -143,7 +145,7 @@
         </main>
     </div>
 </body>
-<footer class="bg-dark text-center text-white">
+<footer class="text-center text-white"style="background-color: #0E8388;">
     <div class="text-center p-5" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2023 Copyright: RPL Wikrama
     </div>

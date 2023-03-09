@@ -16,7 +16,7 @@ class TuitionController extends Controller
     {
         if(auth()->user()->level != 'admin'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = Tuition::orderby('id','desc')->get();
@@ -40,7 +40,7 @@ class TuitionController extends Controller
     {
         $cek = Tuition::where('enter',$request->enter)->where('out',$request->out)->count();
         if($cek!=0){
-            return redirect('tuition')->with('errors','SPP '.$request->enter.'/'.$request->out.' sudah ada sebelumnya!');
+            return redirect('tuition')->with('error','SPP '.$request->enter.'/'.$request->out.' sudah ada sebelumnya!');
         }
 
         Tuition::create([

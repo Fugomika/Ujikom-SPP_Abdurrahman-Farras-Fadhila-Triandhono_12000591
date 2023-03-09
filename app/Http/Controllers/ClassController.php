@@ -16,7 +16,7 @@ class ClassController extends Controller
     {
         if(auth()->user()->level != 'admin'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = Classe::orderby('id','desc')->get();
@@ -40,7 +40,7 @@ class ClassController extends Controller
     {
         $cek = Classe::where('grade',$request->grade)->where('major',$request->major)->count();
         if($cek!=0){
-            return redirect('class')->with('errors','Kelas '.$request->grade.' - '.$request->major.' sudah ada sebelumnya!');
+            return redirect('class')->with('error','Kelas '.$request->grade.' - '.$request->major.' sudah ada sebelumnya!');
         }
 
         Classe::create([

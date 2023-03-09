@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         if(auth()->user()->level != 'admin'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = User::orderby('created_at','desc')->get();
@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $cek = User::where('email',$request->email)->count();
         if($cek!=0){
-            return redirect('user')->with('errors','User dengan email '.$request->email.' sudah ada sebelumnya!');
+            return redirect('user')->with('error','User dengan email '.$request->email.' sudah ada sebelumnya!');
         }
 
         User::create([

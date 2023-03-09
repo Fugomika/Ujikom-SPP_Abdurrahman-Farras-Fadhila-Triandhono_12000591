@@ -5,9 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    Data Siswa
-                </div>
                 <div class="card-body">
                             <h5>Siswa</h5>
                         <div class="row justify-content-center align-items-center g-2">
@@ -57,7 +54,7 @@
                         <strong>Berhasil!</strong> {{$message}}
                     </div>
                 @endif
-                @if ($message = Session::get('errors'))
+                @if ($message = Session::get('error'))
                     <div class="alert alert-danger">
                         <strong>Peringatan!</strong> {{$message}}
                     </div>

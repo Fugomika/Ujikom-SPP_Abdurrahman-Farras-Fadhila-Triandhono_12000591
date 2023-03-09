@@ -19,7 +19,7 @@
                         <strong>Berhasil!</strong> {{$message}}
                     </div>
                 @endif
-                @if ($message = Session::get('errors'))
+                @if ($message = Session::get('error'))
                     <div class="alert alert-danger">
                         <strong>Peringatan!</strong> {{$message}}
                     </div>

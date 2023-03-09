@@ -17,7 +17,7 @@ class StudentController extends Controller
     {
         if(auth()->user()->level != 'admin'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $t = Tuition::all();
@@ -31,11 +31,11 @@ class StudentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function history(): Response
     {
         if(auth()->user()->level != 'student'){
             return response(
-                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+                redirect('/home')->with('error','Anda Tidak memiliki akses halaman tersebut!')
             );
         }
         $data = PaymentViews::where('nisn_fk_id',auth()->user()->id)->orderby('id','desc')->get();
@@ -52,7 +52,7 @@ class StudentController extends Controller
     {
         $cek = Student::where('nisn',$request->nisn)->count();
         if($cek!=0){
-            return redirect('student')->with('errors','Siswa dengan NISN '.$request->nisn.' sudah ada sebelumnya!');
+            return redirect('student')->with('error','Siswa dengan NISN '.$request->nisn.' sudah ada sebelumnya!');
         }
 
         $c = Classe::where('id',$request->class_fk_id)->first();

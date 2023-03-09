@@ -30,6 +30,6 @@ Route::middleware('auth')->group(function(){
     Route::resource('tuition',TC::class);
     Route::resource('user',UC::class);
     Route::resource('class',CC::class);
-    Route::get('/history',[SC::class,'create']);
+    Route::get('/history',[SC::class,'history']);
 });
 

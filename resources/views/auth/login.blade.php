@@ -50,7 +50,7 @@
                         <center>
                             <i>"Bertakwa, cerdas, dan berkarakter pemimpin"</i>
                         </center>
-                        <br><br><br>
+                        <br><br>
                     </form>
                 </div>
             </div>

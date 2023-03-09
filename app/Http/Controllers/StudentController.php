@@ -15,6 +15,11 @@ class StudentController extends Controller
      */
     public function index(): Response
     {
+        if(auth()->user()->level != 'admin'){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
         $t = Tuition::all();
         $c = Classe::all();
         $data = StudentViews::orderby('created_at','desc')->get();
@@ -28,7 +33,12 @@ class StudentController extends Controller
      */
     public function create(): Response
     {
-        $data = PaymentViews::orderby('id','desc')->get();
+        if(auth()->user()->level != 'student'){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
+        $data = PaymentViews::where('nisn_fk_id',auth()->user()->id)->orderby('id','desc')->get();
         $s = StudentViews::where('nisn',auth()->user()->id)->first();
         return response(
             view('history',compact('data','s'))
@@ -60,7 +70,7 @@ class StudentController extends Controller
         User::create([
             'id'=>$request->nisn,
             'name'=>$request->name,
-            'email'=>$request->nisn.'@sch.id',
+            'email'=>$request->nisn.'@asbosch.id',
             'level'=>'student',
             'password'=>Hash::make($request->nisn),
         ]);

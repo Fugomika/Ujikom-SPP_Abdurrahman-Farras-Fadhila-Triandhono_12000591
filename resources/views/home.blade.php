@@ -13,6 +13,11 @@
                             {{ session('status')}}
                         </div>
                     @endif
+                    @if ($message = Session::get('errors'))
+                    <div class="alert alert-danger">
+                        <strong>Peringatan!</strong> {{$message}}
+                    </div>
+                    @endif
                     
                     {{__("Selamat Datang, ".Str::ucfirst(Auth::user()->name).'!')}}
                 </div>

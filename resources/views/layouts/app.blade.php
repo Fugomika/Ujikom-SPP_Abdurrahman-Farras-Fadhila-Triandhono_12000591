@@ -8,8 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>SPP APP - SMAIT As-Syifa Boarding School</title>
+    <link rel="icon" type="image/x-icon" href="../../../public/favicon.ico">
 
-    
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -43,6 +43,9 @@
             overflow: hidden;
             max-width: 100%;
             width: 100%;
+        }
+        #hide * {
+            display: none;
         }
         /* .modal-body * {
             position: fixed;
@@ -140,15 +143,17 @@
         </main>
     </div>
 </body>
+<footer class="bg-dark text-center text-white">
+    <div class="text-center p-5" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright: RPL Wikrama
+    </div>
+</footer>
 <script>
 $(document).ready( function () {
     $('.table').DataTable({
         dom: 'Bfrtip',
         buttons: [
             {
-                extend: 'copy',
-                filename: "Data"
-            }, {
                 extend: 'excel',
                 filename: "Data"
             }, {

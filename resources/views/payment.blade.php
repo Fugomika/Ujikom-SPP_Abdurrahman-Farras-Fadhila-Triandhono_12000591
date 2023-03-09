@@ -17,6 +17,9 @@
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <strong>Berhasil!</strong> {{$message}}
+                        <script>
+                            $('.receipt')[0].show();
+                        </script>
                     </div>
                 @endif
                 @if ($message = Session::get('errors'))
@@ -69,6 +72,15 @@
 @endsection
 
 @section('script')
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <script>
+        setTimeout(() => {
+            $('.receipt')[0].click();
+        }, 500);
+    </script>
+</div>
+@endif
 <script>
     $('#nisn_fk_id').on('change',function(){
         let url = "{{ route('payment.create','nisn=:id') }}";
@@ -113,6 +125,7 @@
             url:url,
             method:'get',
             success: function(data){
+                $('#jumlahh').html('<b>Tanggal</b>');
                 $('#rname').html(data["student"]["name"]);
                 $('#rnisn').html(data["student"]["nisn"]);
                 $('#rnis').html(data["student"]["nis"]);
@@ -121,7 +134,7 @@
                 $('#raddress').html(data["student"]["address"]);
                 $('#rphone').html(data["student"]["phone"]);
 
-                $('#rspp').append('<div class="row justify-content-center align-items-center g-2"> <div class="col">'+data["payed"]["month_name"]+' - '+data["payed"]["year"]+'</div> <div class="col">'+data["payed"]["treasurer"]+'</div> <div class="col">'+data["payed"]["created_at"].slice(0,10)+'</div> <div class="col">1</div> <div class="col">Rp.'+data["payed"]["price"]+'</div> </div>');
+                $('#rspp').append('<div class="row justify-content-center align-items-center g-2"> <div class="col">'+data["payed"]["month_name"]+' - '+data["payed"]["year"]+'</div> <div class="col">'+data["payed"]["treasurer"]+'</div> <div class="col">'+data["payed"]["created_at"].slice(0,10)+'</div><div class="col">Rp.'+data["payed"]["price"]+'</div> </div>');
                 // jQuery.each(data["payed"][0],function(i,val){
                 //     $('#rspp').append('<div class="row justify-content-center align-items-center g-2"> <div class="col">'+data["payed"]["month_name"]+'</div> <div class="col">'+data["payed"]["treasurer"]+'</div> <div class="col">'+data["payed"]["created_at"]+'</div> <div class="col">'+data["payed"]["price"]+'</div> </div>');
                 // });
@@ -132,6 +145,7 @@
     $('#modalReceipt').on('hide.bs.modal',function(){
         setTimeout(() => {
             console.log('ke hide ges')
+                $('#jumlahh').html('<b>Jumlah</b>');
                 $('#rname').html();
                 $('#rnisn').html();
                 $('#rnis').html();

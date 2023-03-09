@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{User,Student,Special};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,6 +15,11 @@ class UserController extends Controller
      */
     public function index(): Response
     {
+        if(auth()->user()->level != 'admin'){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
         $data = User::orderby('created_at','desc')->get();
         return response(
             view('user',compact('data'))
@@ -86,6 +91,8 @@ class UserController extends Controller
     public function destroy($r): RedirectResponse
     {
         User::where('id',$r)->delete();
+        Student::where('nisn',$r)->delete();
+        Special::where('nisn_fk_id',$r)->delete();
         return redirect('user')->with('success','User Berhasil dihapus!');
     }
 }

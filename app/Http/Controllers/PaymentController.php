@@ -14,6 +14,11 @@ class PaymentController extends Controller
      */
     public function index(): Response
     {
+        if((auth()->user()->level == 'student')){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
         $data = PaymentViews::orderby('id','desc')->get();
         $s = Student::all();
         return response(
@@ -34,7 +39,7 @@ class PaymentController extends Controller
         if($count == 0){
             $max = 36;
             $last = "Siswa belum pernah membayar SPP";
-        }elseif($count == 36){
+        }elseif($count >= 36){
             $max = 0;
             $last = "<span class='text-danger'>SPP Siswa sudah lunas</span>";
         }else{
@@ -44,7 +49,9 @@ class PaymentController extends Controller
         if(!empty($special)){
             $plus = 36 - $special->reduction;
             $max -= $special->reduction;
-            if($count == $plus){
+            if($count == 0){
+                $last = "Siswa belum pernah membayar SPP";
+            }elseif($count == $plus){
                 $last = "<span class='text-danger'>SPP Siswa sudah lunas</span>";
             }else{
                 $last = "Terakhir bayar bulan ".$l->month_name." - ".$l->year;

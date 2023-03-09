@@ -42,13 +42,30 @@
                 <div class="row justify-content-center align-items-center g-2">
                     <div class="col"><b>Bulan</b></div>
                     <div class="col"><b>Petugas</b></div>
-                    <div class="col"><b>Pada</b></div>
-                    <div class="col"><b>Jumlah</b></div>
+                    {{-- <div class="col"><b>Detail</b></div> --}}
+                    <div class="col" id="jumlahh"><b>Jumlah</b></div>
                     <div class="col"><b>Harga</b></div>
                 </div>
                 <div id="rspp">
 
                 </div>
+
+                <div id="hide" style='display:none;'>
+                    <hr>
+                    <h5>Detail</h5>
+                    <hr>
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col"><b>Bulan</b></div>
+                        <div class="col"><b>Petugas</b></div>
+                        <div class="col"><b>Pada</b></div>
+                        <div class="col"><b>Jumlah</b></div>
+                        <div class="col"><b>Harga</b></div>
+                    </div>
+                    <div id="rspp2">
+
+                    </div>
+                </div>
+
                 <hr>
                 <div class="row justify-content-center align-items-center g-2">
                     <div class="col"><b>{{Carbon\Carbon::now()}}</b></div>

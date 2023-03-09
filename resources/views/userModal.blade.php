@@ -32,10 +32,10 @@
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <select required class="form-select form-select-md" name="level" id="level">
+                            <select readonly required class="form-select form-select-md" name="level" id="level">
                                 <option selected value="">Level</option>
                                 <option value="treasurer">Petugas</option>
-                                <option value="student">Siswa</option>
+                                <option disabled value="student">Siswa - Silahkan buat dalam halaman siswa</option>
                             </select>                        
                         </div>
                     </div>

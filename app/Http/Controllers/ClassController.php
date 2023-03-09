@@ -14,6 +14,11 @@ class ClassController extends Controller
      */
     public function index(): Response
     {
+        if(auth()->user()->level != 'admin'){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
         $data = Classe::orderby('id','desc')->get();
         return response(
             view('class',compact('data'))

@@ -14,6 +14,11 @@ class MutationController extends Controller
      */
     public function index(): Response
     {
+        if(auth()->user()->level != 'admin'){
+            return response(
+                redirect('/home')->with('errors','Anda Tidak memiliki akses halaman tersebut!')
+            );
+        }
         $data = MutationViews::orderby('id','desc')->get();
         $s = Student::all();
         return response(

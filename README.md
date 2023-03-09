@@ -1,4 +1,4 @@
-<h5>Cara Menggunakan</h5><br>
+<h5>Cara Menggunakan Aplikasi</h5><br>
 <code>Ubah .env DATABASE_NAME="" sesuai nama Database</code><br>
 <code>Pastikan menggunakan PHP 8.0^</code><br>
 <code>Jalankan code berikut pada terminal : </code><br>

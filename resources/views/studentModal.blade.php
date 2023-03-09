@@ -10,6 +10,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center align-items-center g-2">
+                        <small class="form-text text-danger" id="helpId">Pastikan NISN sesuai dengan data siswa! NISN tidak boleh diubah.</small>
+
                         <div class="col">
                             <div class="mb-3">
                                 <input required type="text"
@@ -19,9 +21,10 @@
                         <div class="col">
                             <div class="mb-3">
                                 <input required type="text"
-                                    class="form-control number" name="nis" id="nis" aria-describedby="helpId" placeholder="NIS">
+                                class="form-control number" name="nis" id="nis" aria-describedby="helpId" placeholder="NIS">
                             </div>
                         </div>
+                        
                     </div>
                     <div class="row justify-content-center align-items-center g-2">
                         <div class="col">
@@ -70,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" onclick="return confirm('Yakin data sudah benar?')"class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <select readonly required class="form-select form-select-md" name="level" id="level">
+                            <select required class="form-select form-select-md" name="level" id="level">
                                 <option selected value="">Level</option>
                                 <option value="treasurer">Petugas</option>
                                 <option disabled value="student">Siswa - Silahkan buat dalam halaman siswa</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" onclick="return confirm('Yakin data sudah benar?')"class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>

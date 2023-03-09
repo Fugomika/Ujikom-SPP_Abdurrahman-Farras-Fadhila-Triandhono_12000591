@@ -149,7 +149,8 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment): RedirectResponse
     {
-        $payment->delete();
+        $p = Payment::where('nisn_fk_id',$payment->nisn_fk_id)->orderBy('id','desc')->first();
+        $p->delete();
         return redirect('payment')->with('success','Pembayaran Berhasil dihapus!');
     }
 }

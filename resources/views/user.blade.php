@@ -48,17 +48,18 @@
                                     <td>{{$a->email}}</td>
                                     <td>{{$a->level}}</td>
                                     <td><span style="display:none;">{{$a->created_at}}</span>
-                                        <form action="{{route('user.destroy',$a->id)}}" method="post">
+                                        <form action="{{route('user.destroy',$a->id)}}" method="post" id="form-delete">
                                             @csrf
                                             @method('delete')
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button type="button" data-id="{{$a->id}}" class="edit btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </button>
-                                                <button onclick="return confirm('Yakin ingin menghapus {{$a->name}}?')" type="submit" class="btn btn-outline-danger">
+                                                <button type="button" data-id="Yakin ingin User {{$a->name}}?" class="delete btn btn-outline-danger">
                                                     <i class="bi bi-trash3"></i>
                                                 </button>
                                             </div>
+                                        </form>
                                         </form>
                                     </td>
                                 </tr>

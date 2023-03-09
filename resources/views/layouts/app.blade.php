@@ -63,7 +63,7 @@
 <body style="padding-top: 65px; background-color: #2C3333;">
     {{-- <img src="{{public_path('images/favicon.ico')}}" alt=""> --}}
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top  shadow-sm" style="background-color: #2E4F4F;">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top shadow-sm" style="background-color: #2E4F4F;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="rounded-circle shadow-4-strong bg-white" alt="avatar2" width="50" src="https://smpit.assyifa-boardingschool.sch.id/wp-content/uploads/2019/09/Logo-SMPIT-fix-1024x1024.png" />
@@ -123,11 +123,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                    <a class="dropdown-item" id="logout">Logout</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -151,6 +147,39 @@
     </div>
 </footer>
 <script>
+$('.delete').click(function($event){  
+    event.preventDefault();
+    Swal.fire({
+    title: "",
+    text: $(this).attr('data-id'),
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, hapus!',
+    cancelButtonText: 'Tidak',
+    confirmButtonColor: '#d33',
+    reverseButtons: true
+    }).then((result) => {
+    if(result.isConfirmed) {
+        document.getElementById('form-delete').submit();
+    }
+    });
+});
+$('#logout').click(function($event){  
+    event.preventDefault();
+    Swal.fire({
+    title: "",
+    text: 'Yakin ingin Logout?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, logout!',
+    cancelButtonText: 'Tidak',
+    reverseButtons: true
+    }).then((result) => {
+    if(result.isConfirmed) {
+        document.getElementById('logout-form').submit();
+    }
+    });
+});
 $(document).ready( function () {
     $('.table').DataTable({
         dom: 'Bfrtip',

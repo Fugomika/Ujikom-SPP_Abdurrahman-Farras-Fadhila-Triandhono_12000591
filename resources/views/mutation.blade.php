@@ -50,14 +50,14 @@
                                     <td>{{$a->name}}</td>
                                     <td>{{$a->reduction}}</td>
                                     <td>
-                                        <form action="{{route('mutation.destroy',$a->id)}}" method="post">
+                                        <form action="{{route('mutation.destroy',$a->id)}}" method="post" id="form-delete">
                                             @csrf
                                             @method('delete')
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button type="button" data-id="{{$a->id}}" class="edit btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </button>
-                                                <button onclick="return confirm('Yakin ingin menghapus Mutasi {{$a->enter}}/{{$a->out}}?')" type="submit" class="btn btn-outline-danger">
+                                                <button type="button" data-id="Yakin ingin menghapus data mutasi milik {{$a->name}}?" class="delete btn btn-outline-danger">
                                                     <i class="bi bi-trash3"></i>
                                                 </button>
                                             </div>
@@ -91,7 +91,7 @@
                 $('#modalTitle').html('Edit Mutasi');
                 $('[name="_method"]').val('PUT');
 
-                $('#nisn_fk_id').hide();
+                $('#nisn_fk_id option[value='+data["nisn_fk_id"]+']').attr('selected','selected');
                 $('.select2').hide();
                 $('#reduction option[value='+data["reduction"]+']').attr('selected','selected');
             }

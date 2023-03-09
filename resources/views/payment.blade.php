@@ -55,17 +55,17 @@
                                     <td>{{$a->treasurer}}</td>
                                     <td>{{$a->created_at}}</td>
                                     <td><span style="display:none;">{{$a->created_at}}</span>
-                                        <form action="{{route('payment.destroy',$a->id)}}" method="post">
+                                        <form action="{{route('payment.destroy',$a->id)}}" method="post" id="form-delete">
                                             @csrf
                                             @method('delete')
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" data-id="{{$a->id}}" class="receipt btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalReceipt">
-                                                    <i class="bi bi-eye"></i>
+                                                <button type="button" data-id="{{$a->id}}" class="edit btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal">
+                                                    <i class="bi bi-pencil-square"></i>
                                                 </button>
-                                                @if(auth()->user()->level == 'admin')
-                                                    <button onclick="return confirm('Yakin ingin menghapus Pembayran {{$a->created_at}} ?')" type="submit" class="btn btn-outline-danger">
-                                                        <i class="bi bi-trash3"></i>
-                                                    </button>
+                                                @if(auth()->user()->level == "admin")
+                                                <button type="button" data-id="Yakin ingin menghapus Pembayaran Terakhir {{$a->name}}? Pembayaran yang dihapus adalah riyawat pembayaran terakhir" class="delete btn btn-outline-danger">
+                                                    <i class="bi bi-trash3"></i>
+                                                </button>
                                                 @endif
                                             </div>
                                         </form>

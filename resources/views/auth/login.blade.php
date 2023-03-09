@@ -3,9 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Halaman Login') }}</div>
+                <div class="card-header"><center>SPP APP - SMAIT As-Syifa Boarding School</center></div>
+                <br>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -41,7 +42,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-outline-primary">
                                     {{ __('Login') }}
                                 </button>
                             </div>

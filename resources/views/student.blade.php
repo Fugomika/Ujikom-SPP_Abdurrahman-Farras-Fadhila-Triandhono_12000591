@@ -52,7 +52,7 @@
                                     <td>{{$a->grade}} - {{$a->major}}</td>
                                     <td>{{$a->enter}}/{{$a->out}}</td>
                                     <td><span style="display:none;">{{$a->created_at}}</span>
-                                        <form action="{{route('student.destroy',$a->nisn)}}" method="post">
+                                        <form action="{{route('student.destroy',$a->nisn)}}" method="post" id="form-delete">
                                             @csrf
                                             @method('delete')
                                             <div class="btn-group" role="group" aria-label="Basic example">
@@ -62,7 +62,7 @@
                                                 <button type="button" data-id="{{$a->nisn}}" class="receipt btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalReceipt">
                                                     <i class="bi bi-eye"></i>
                                                 </button>
-                                                <button onclick="return confirm('Yakin ingin menghapus {{$a->name}}?')" type="submit" class="btn btn-outline-danger">
+                                                <button type="button" data-id="Yakin ingin menghapus Data {{$a->name}}?" class="delete btn btn-outline-danger">
                                                     <i class="bi bi-trash3"></i>
                                                 </button>
                                             </div>

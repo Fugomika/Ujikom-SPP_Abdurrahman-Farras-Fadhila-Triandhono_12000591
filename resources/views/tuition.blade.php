@@ -48,14 +48,14 @@
                                     <td>{{$a->out}}</td>
                                     <td>{{$a->price}}</td>
                                     <td><span style="display:none;">{{$a->created_at}}</span>
-                                        <form action="{{route('tuition.destroy',$a->id)}}" method="post">
+                                        <form action="{{route('tuition.destroy',$a->id)}}" method="post" id="form-delete">
                                             @csrf
                                             @method('delete')
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button type="button" data-id="{{$a->id}}" class="edit btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </button>
-                                                <button onclick="return confirm('Yakin ingin menghapus SPP {{$a->enter}}/{{$a->out}}?')" type="submit" class="btn btn-outline-danger">
+                                                <button type="button" data-id="Yakin ingin menghapus SPP tahun {{$a->enter}}/{{$a->out}}?" class="delete btn btn-outline-danger">
                                                     <i class="bi bi-trash3"></i>
                                                 </button>
                                             </div>
